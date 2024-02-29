@@ -35,14 +35,30 @@ export class LwxWeatherComponent implements OnInit {
             {
               label: 'Temperature (°F)',
               data: this.periodTemperature,
-              borderWidth: 1,
+              borderColor: 'rgb(255, 99, 132)',
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderWidth: 2,
+              pointBackgroundColor: 'rgb(255, 99, 132)',
             },
           ],
         },
         options: {
+          responsive: true,
           scales: {
+            x: {
+              display: true,
+              title: {
+                display: true,
+                text: 'Period'
+              }
+            },
             y: {
+              display: true,
               beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Value'
+              }
             },
           },
           plugins: {

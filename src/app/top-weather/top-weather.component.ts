@@ -18,10 +18,10 @@ export class TopWeatherComponent implements OnInit {
   constructor(private service: ChartService) { }
   loading = true;
   ngOnInit(): void {
-   this.createLWXChart();
+   this.createTOPChart();
   }
 
-  createLWXChart(): void {
+  createTOPChart(): void {
     this.service.getChartDataTOP().subscribe((res) => {
       this.result = res;
       this.periodTemperature = this.result.properties.periods.map((periods: any) => periods.temperature);
@@ -35,14 +35,29 @@ export class TopWeatherComponent implements OnInit {
             {
               label: 'Temperature (°F)',
               data: this.periodTemperature,
-              borderWidth: 1,
+              borderColor: 'rgb(54, 162, 235)',
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderWidth: 2,
+              pointBackgroundColor: 'rgb(54, 162, 235)',
             },
           ],
         },
         options: {
           scales: {
+            x: {
+              display: true,
+              title: {
+                display: true,
+                text: 'Period'
+              }
+            },
             y: {
+              display: true,
               beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Value'
+              }
             },
           },
           plugins: {
